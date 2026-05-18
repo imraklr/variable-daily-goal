@@ -1,0 +1,14 @@
+debug/
+target/
+
+Cargo.lock
+
+**/*.rs.bk
+
+# for windows debugger files
+*.pdb
+
+rust-project.json
+
+
+./vscode
