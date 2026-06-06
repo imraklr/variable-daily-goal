@@ -5,3 +5,7 @@ edition = "2024"
 
 [dependencies]
 actix-web = "4"
+cargo-watch = "8.5.3"
+local-ip-address = "0.6.12"
+mdns-sd = "0.19.2"
+mime_guess = "2.0.5"
