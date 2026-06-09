@@ -1,3 +1,19 @@
+/* Disable text selection */
+* {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    /* Disable dragging */
+    -webkit-user-drag: none;
+}
+
+/* Prevent image dragging */
+img {
+    pointer-events: none;
+}
+
 *,
 *::before,
 *::after {
@@ -46,7 +62,25 @@ body {
     justify-content: space-evenly;
 
     * {
+        font-family:'Courier New', Courier, monospace;
+        font-weight: bolder;
+        font-size: large;
         padding-left: 14px;
         padding-right: 14px;
+    }
+}
+
+#weektasksgallery {
+    width: 100vw;
+    height: fit-content;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    /* align-content:space-evenly; */
+    justify-content: center;
+
+    * {
+        margin: 7px;
     }
 }

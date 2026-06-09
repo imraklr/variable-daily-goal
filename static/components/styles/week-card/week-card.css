@@ -1,0 +1,75 @@
+.week-card {
+    width: 250px;
+    max-width: 250px;
+    height: fit-content;
+
+    padding: 8px;
+    
+    border: 3px solid gray;
+    border-radius: 9px;
+
+    background-color: transparent;
+
+    color: white;
+    mix-blend-mode: difference;
+
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+    * {
+        margin-top: 4px;
+        margin-bottom: 4px;
+
+        font-family: 'Courier New', Courier, monospace;
+    }
+}
+
+.task-add-btn {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+
+    background-color: transparent;
+
+    border: 1px solid white;
+    border-radius: 9px;
+    
+    width: 100%;
+}
+
+.week-day-title {
+    width: fit-content;
+    height: fit-content;
+}
+
+div[id^="daily-comment"] {
+    background-color: inherit;
+
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+
+    color: white;
+    overflow-x: hidden;
+    overflow-wrap: normal;
+    text-align: left;
+    font-size: medium;
+
+    caret-shape: block;
+    caret-animation: auto;
+    caret-color: #eaeaea2e;
+}
+div[id^="daily-comment"]:empty::before {
+  content: attr(data-placeholder);
+  color: #888;
+  pointer-events: all;
+
+  padding: 4px;
+  display: block;
+}
+div[id^="daily-comment"]:focus:empty::before {
+    color: #aaa;
+}

@@ -9,17 +9,30 @@
     <link rel="stylesheet" href="static/landing/landing.css">
 
     <!-- any JS goes here -->
+    <script src="static/landing/landing.js" defer></script>
     <script src="static/landing/hhmmddmmyyyyttday.js" defer></script>
+    <script type="module" src="static/components/week-card.js" defer></script>
 </head>
 <body>
     <div id="node0">
+
         <div id="hhmmddmmyyyyttdaytempday">
             <div id="HHMM_Box"></div>
             <div id="DDMMYYYY_Box"></div>
-            <div id="TEMPERATURE_Box">XX&deg;C</div>
+            <div id="TEMPERATURE_Box" onclick="onclickChangeTempUnit()">0&deg;c</div>
             <div id="DAY_Box"></div>
         </div>
-        <div id="weektasksbox"></div>
+
+        <div id="weektasksgallery">
+            <week-card day="Mon"></week-card>
+            <week-card day="Tue"></week-card>
+            <week-card day="Wed"></week-card>
+            <week-card day="Thu"></week-card>
+            <week-card day="Fri"></week-card>
+            <week-card day="Sat"></week-card>
+            <week-card day="Sun"></week-card>
+        </div>
+
         <div id="weekprogressbox"></div>
     </div>
 </body>

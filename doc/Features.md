@@ -9,7 +9,7 @@
 3. The system shall have a text input for daily comments, whose field shall remain open for the next half day.
 4. The system shall be able to show weeks' schedule at one place.
 5. The system shall display the basic information, preferrably on center top of screen, the date and weather in format:
-    HH:MM DD:MM:YYYY 33°C Thu
+    HH::MM DD:MM:YYYY 33°C Thu
 6. The system shall have a timing feature which can be used to allocate time to tasks.
 7. The system shall be able to use vertical and horizontal time structure stateful cascading:
     a. Vertical Stateful Cascading: All tasks in the day are assigned with a default of 30 minute gaps.
