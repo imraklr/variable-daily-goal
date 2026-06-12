@@ -70,6 +70,3 @@ div[id^="daily-comment"]:empty::before {
   padding: 4px;
   display: block;
 }
-/* div[id^="daily-comment"]:focus:empty::before {
-    color: #aaa;
-} */
