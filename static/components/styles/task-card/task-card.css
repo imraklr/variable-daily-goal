@@ -1,0 +1,52 @@
+.task-card {
+    min-height: 50px;
+    width: 250px;
+
+    border: 2px solid gray;
+    border-radius: 8px;
+
+    margin-bottom: 4px;
+
+    overflow: hidden;
+}
+
+.task-card-timer-box-btns {
+    height: 14px;
+    border-bottom: 1px solid purple;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+}
+
+.task-card-timer-box {
+    width: 100%;
+    
+    border-right: 1px solid gray;
+
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    display: flex;
+}
+
+.btns-box {
+    width: fit-content;
+
+    justify-content: center;
+
+    cursor: pointer;
+
+    background-color: white;    
+}
+
+.cascade-time-down {
+    width: fit-content;
+}
+
+.task-card-text-box {
+    height: 45px;
+    
+    overflow: hidden;
+}

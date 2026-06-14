@@ -1,4 +1,4 @@
-const cssUrl = new URL(
+const cssUrlWeekCard = new URL(
   "./styles/week-card/week-card.css",
   import.meta.url
 );
@@ -8,11 +8,13 @@ class WeekCard extends HTMLElement {
     const shadow = this.attachShadow({ mode: "open" });
 
     shadow.innerHTML = `
-      <link rel="stylesheet" href="${cssUrl.href}">
+      <link rel="stylesheet" href="${cssUrlWeekCard.href}">
 
-      <div class="week-card">
+      <div class="week-card" id="${this.getAttribute("day")}" data-nth-day="Get this populated from the Rust backend.">
         <div class="week-day-title">
           <h3>${this.getAttribute("day")}</h3>
+        </div>
+        <div class="task-cards-box">
         </div>
         <div class="task-add-btn">
           <svg width="40" height="40" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -28,6 +30,51 @@ class WeekCard extends HTMLElement {
 
       </div>
     `;
+
+    const btn = this.shadowRoot.querySelector('.task-add-btn');
+    const divBox = this.shadowRoot.querySelector('.task-cards-box');
+
+    // action to perform on clicking task-add-btn
+    function clickedTaskAddBtn(dayString, nthDay) {
+      // when clicked, a task card is displayed (clicking out of which makes the task card disappear if the task card was empty)
+
+      // create a task card, not yet attached to the DOM
+      const taskCard = document.createElement("task-card");
+      taskCard.setAttribute("day", dayString);
+      taskCard.setAttribute("nth-day", nthDay);
+      taskCard.addEventListener("click", (e) => {
+        if (!taskCard.contains(e.target)) {
+          e.stopPropagation();
+          // check if the task-card's basic user input needs were satisfied
+          // that means check if the core writing field of task-card was empty or not
+          // if the core edit field is empty, and the user has clicked outside the target element i.e. 
+          // if the user has clicked outside the task-card when the task-card is empty, then make this task-card disapper
+          // from the DOM.
+          // to do that:
+          divBox.removeChild(taskCard);
+        }
+      });
+
+      // now show this new task card in the div box
+      divBox.appendChild(taskCard); // card attached, event listener attached to the task card
+    }
+
+    btn.addEventListener('mouseenter', () => {
+      const date = new Date();
+      if (this.getAttribute('day') === date.toLocaleDateString("en-US", { weekday: "short" })) {
+        btn.style.cursor = 'pointer';
+      }
+    });
+    btn.addEventListener('click', () => {
+      // check if data entry is allowed by comparing with the current day only
+      const date = new Date();
+      if (this.getAttribute('day') === date.toLocaleDateString("en-US", { weekday: "short" })) {
+        clickedTaskAddBtn(
+          btn.getAttribute('day'),
+          btn.getAttribute('data-nth-day')
+        );
+      }
+    });
   }
 }
 
@@ -49,15 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
-
-function asSoonAsCommentPlaceholderIsEmpty(box) {
-  const date = new Date();
-
-  box.setAttribute(
-    "data-placeholder",
-    `Comment Disables in ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
-  );
-}
 
 function updateCommentState(dayName, box) {
   const now = new Date();
